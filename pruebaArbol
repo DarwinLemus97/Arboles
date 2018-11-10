@@ -1,0 +1,65 @@
+package pruebaarbol;
+
+import java.util.Scanner;
+import pruebaarbol.model.Nodo;
+
+public class Pruebaarbol {
+
+    public static void main(String[] args) {
+        String familia, nombre, nombre1, tipoSuelo, tipoSuelo1, zona, zona1;
+        Scanner entrada = new Scanner(System.in);
+        System.out.println("Agregando Arbol y Mostrando en PreOrden");
+        System.out.print("Familia: ");
+        familia = entrada.nextLine();
+        
+        Nodo raiz = new Nodo(familia);
+        System.out.print("Nombre: ");
+        nombre = entrada.nextLine();
+        Nodo nodo2 = new Nodo(nombre);
+
+        System.out.print("Tipo de suelo: ");
+        zona = entrada.nextLine();
+        nodo2.setNodoIzquierdo(new Nodo(zona));
+
+        System.out.print("Zona: ");
+        zona = entrada.nextLine();
+        nodo2.setNodoDerecho(new Nodo(zona));
+
+        
+        System.out.print("Nombre: ");
+        nombre1 = entrada.nextLine();
+        Nodo nodo3 = new Nodo(nombre1);
+
+        System.out.print("tipo de suelo: ");
+        zona = entrada.nextLine();
+        nodo3.setNodoIzquierdo(new Nodo(zona));
+
+        System.out.print("Zona: ");
+        zona = entrada.nextLine();
+        nodo3.setNodoDerecho(new Nodo(zona));
+
+        raiz.setNodoIzquierdo(nodo2);
+
+        raiz.setNodoDerecho(nodo3);
+
+        System.out.println("        PreOrden: ");
+
+        preOrden(raiz);
+    }
+
+  
+    private static void preOrden(Nodo raiz) {
+
+        if (raiz != null) {
+
+            System.out.println(raiz.getDato());
+
+            preOrden(raiz.getNodoIzquierdo());
+
+            preOrden(raiz.getNodoDerecho());
+
+        }
+
+    }
+
+}
